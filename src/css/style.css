@@ -325,6 +325,13 @@ main>section,
   padding-bottom: var(--space-section);
 }
 
+/* The page-intro portrait floats down into the prose; keep it clear of the footer on short pages. */
+.prose::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .prose>* {
   max-width: var(--measure);
 }
@@ -621,16 +628,20 @@ code {
   color: color-mix(in srgb, var(--cream) 55%, transparent);
 }
 
-.about-me-selfie {
-  max-width: 400px;
-  display: block;
+/* Sized as a share of the column so the text beside it always has room. */
+.floating-portrait {
   float: right;
+  width: min(400px, 40%);
+  height: auto;
+  margin-left: 1.5rem;
 }
 
 @media (max-width: 640px) {
-  .about-me-selfie {
-    display: inline;
+  .floating-portrait {
     float: none;
+    display: block;
+    width: min(280px, 100%);
+    margin-inline: auto;
   }
 }
 
